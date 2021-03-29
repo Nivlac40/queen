@@ -29,7 +29,7 @@ func recurse(board [8][8]space, depth int) bool {
 				bc := board
 				mark(&bc, x, y)
 				if recurse(bc, depth + 1) {
-					return false
+					return true
 				}
 			}
 		}
