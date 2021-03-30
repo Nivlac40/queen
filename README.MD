@@ -1,1 +1,1 @@
-A simple program to solve the 8 queens problem
+A hastily constructed but simple program to solve the 8 queens problem
