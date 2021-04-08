@@ -13,24 +13,22 @@ const (
 )
 
 func main() {
-	recurse([8][8]space{{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0}},0)
+	recurse([8][8]space{{0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}}, 0)
 }
 
-func recurse(board [8][8]space, depth int) bool {
+func recurse(board [8][8]space, row int) bool {
 
-	if depth >= 8 {
+	if row >= 8 {
 		printBoard(board)
 		return true
 	}
 
-	for x, spaces := range board {
-		for y, s := range spaces {
-			if s == empty {
-				bc := board
-				mark(&bc, x, y)
-				if recurse(bc, depth + 1) {
-					return true
-				}
+	for col := 0; col < 8; col++ {
+		if board[row][col] == empty {
+			bc := board
+			mark(&bc, row, col)
+			if recurse(bc, row+1) {
+				return true
 			}
 		}
 	}
